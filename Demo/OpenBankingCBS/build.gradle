@@ -36,3 +36,14 @@ dependencies {
 	compile group: 'com.cloudant', name: 'cloudant-client', version: '2.9.0'
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
+
+task docker {
+    doLast {
+        copy {
+            from 'build/libs/OpenBankCBS-0.1.0.jar'
+            into 'docker'
+        }
+        file("docker/OpenBankCBS-0.1.0.jar").renameTo(file("docker/OpenBankDemo.jar"))
+
+    }
+}
